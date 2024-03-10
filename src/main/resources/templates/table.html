@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>table</title>
+</head>
+<body>
+<form action="/form" method="post">
+	<button type="submit">新增</button>
+</form>
+<table>
+    <thead>
+        <tr>
+            <th> Action </th>
+            <th> Id </th>
+            <th> Date </th>
+            <th> USD/NTD </th>
+            <th> RMB/NTD </th>
+            <th> USD/RMB </th>
+        </tr>
+    </thead>
+    <tbody>
+	<tr th:if="${exchangeRates.empty}">
+        </tr>
+        <tr th:each="exchangeRate : ${exchangeRates}">
+            <td><form action="/form" method="post">
+            		<input type="hidden" name="id" th:value="${exchangeRate.id}" />
+					<button type="submit">修改</button>
+            		<button th:id="${exchangeRate.id}" onclick='del(this)' >刪除</button>
+				</form>
+			</td>
+            <td><span th:text="${exchangeRate.id}"> Id </span></td>
+            <td><span th:text="${exchangeRate.date}"> Date </span></td>
+            <td><span th:text="${exchangeRate.usdtontd}"> USD/NTD </span></td>
+            <td><span th:text="${exchangeRate.rmbtontd}"> RMB/NTD </span></td>
+            <td><span th:text="${exchangeRate.usdtormb}"> USD/RMB </span></td>
+        </tr>
+    </tbody>
+</table>
+
+<script>
+function del(obj){
+	obj.parentNode.parentNode.parentNode.remove();
+	id=obj.id;
+	fetch('/v1/MyDailyForeignExchangeRates/' + id, {
+		  method: 'DELETE',
+		})
+}
+</script>
+</body>
+</html>

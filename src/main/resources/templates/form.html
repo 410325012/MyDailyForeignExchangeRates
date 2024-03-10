@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>form</title>
+</head>
+<body>
+<button onclick="javascript:location.href='/'">回到table</button>
+<form
+            method="post"
+            th:action="@{/save}"
+            th:object="${exchangeRates}">
+            
+            <input type="hidden" th:field = "*{id}" />
+
+            <label>Date:</label>
+            <input type="text" th:field = "*{date}" />
+            <br />
+            <label>USD/NTD:</label>
+            <input type="text" th:field = "*{usdtontd}" />
+            <br />
+            <label>RMB/NTD:</label>
+            <input type="text" th:field = "*{rmbtontd}" />
+            <br />
+            <label>USD/RMB:</label>
+            <input type="text" th:field = "*{usdtormb}" />
+            <br />
+            <button>儲存</button>
+
+</form>
+</body>
+</html>
