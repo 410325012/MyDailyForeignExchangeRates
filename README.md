@@ -1,9 +1,5 @@
-Spring Boot <br>
-Thymeleaf <br>
-RESTful API <br>
-Swagger UI <br>
-H2 Database <br>
-Azure
+實作查詢政府資料API，將美金換台幣、人民幣換台幣、美金換人民幣三種匯率資訊顯示於畫面並存於資料庫 <br>
+Spring Boot、Thymeleaf、RESTful API、Swagger UI、H2 Database、Azure <br>
 
 https://mywebapp20240308.azurewebsites.net/swagger-ui.html
 
